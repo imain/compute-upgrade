@@ -3,8 +3,8 @@
 TOPDIR=$(git rev-parse --show-toplevel)
 IMGDIR="$(cd "$(dirname "$0")" && pwd)"
 
-RELEASE_NAMESPACE=sdake
-NAMESPACE=sdake
+RELEASE_NAMESPACE=imain
+NAMESPACE=imain
 PREFIX=fedora-rdo-
 TAG=$(git rev-parse --short HEAD)
 
