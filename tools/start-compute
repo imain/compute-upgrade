@@ -21,8 +21,8 @@
 # share host networking (--net=host option)
 
 
-PASSWORD=secrete
-SERVICE_HOST=192.168.122.92
+PASSWORD=123456
+SERVICE_HOST=192.168.122.110
 
 # start nova network
 
