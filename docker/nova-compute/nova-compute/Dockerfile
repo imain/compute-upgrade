@@ -1,7 +1,9 @@
 FROM sdake/fedora-rdo-nova-base
 MAINTAINER Steven Dake <sdake@redhat.com>
 
-RUN yum -y install openstack-nova-compute; yum clean all
+RUN yum -y install openstack-nova-compute \
+        libvirtd; yum clean all
+RUN yum -y install libvirt-daemon-config-nwfilter; yum clean all
 
 
 ADD config-nova-compute.sh /opt/kolla/config-nova-compute.sh
