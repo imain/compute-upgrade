@@ -2,7 +2,7 @@
 #/bin/chmod 666 /dev/kvm
 
 echo "Starting guests."
-/usr/libexec/libvirt-guests.sh start
+#/usr/libexec/libvirt-guests.sh start
 
 echo "Starting virtlockd."
 /usr/sbin/virtlockd &
