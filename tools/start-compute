@@ -26,7 +26,7 @@ SERVICE_HOST=192.168.122.110
 
 # start nova network
 
-sudo docker run -d --privileged -e "KEYSTONE_ADMIN_TOKEN=$PASSWORD" -e "NOVA_DB_PASSWORD=$PASSWORD" -e "RABBIT_PASSWORD=$PASSWORD" -e NETWORK_MANAGER="nova" -e "GLANCE_API_SERVICE_HOST=$SERVICE_HOST" -e "KEYSTONE_PUBLIC_SERVICE_HOST=$SERVICE_HOST" -e "RABBITMQ_SERVICE_HOST=$SERVICE_HOST" -e "NOVA_KEYSTONE_PASSWORD=$PASSWORD" -v /sys/fs/cgroup:/sys/fs/cgroup --net=host sdake/fedora-rdo-nova-network
+sudo docker run -d --privileged -e "KEYSTONE_ADMIN_TOKEN=$PASSWORD" -e "NOVA_DB_PASSWORD=$PASSWORD" -e "RABBIT_PASSWORD=$PASSWORD" -e NETWORK_MANAGER="nova" -e "GLANCE_API_SERVICE_HOST=$SERVICE_HOST" -e "KEYSTONE_PUBLIC_SERVICE_HOST=$SERVICE_HOST" -e "RABBITMQ_SERVICE_HOST=$SERVICE_HOST" -e "NOVA_KEYSTONE_PASSWORD=$PASSWORD" -v /sys/fs/cgroup:/sys/fs/cgroup --pid=host --net=host imain/fedora-rdo-nova-network
 
 # start libvirtd
 #sudo docker run -d --privileged -e "KEYSTONE_ADMIN_TOKEN=$PASSWORD" -e "NOVA_DB_PASSWORD=$PASSWORD" -e "RABBIT_PASSWORD=$PASSWORD" -e NETWORK_MANAGER="nova" -e "GLANCE_API_SERVICE_HOST=$SERVICE_HOST" -e "KEYSTONE_PUBLIC_SERVICE_HOST=$SERVICE_HOST" -e "RABBITMQ_SERVICE_HOST=$SERVICE_HOST" -e "NOVA_KEYSTONE_PASSWORD=$PASSWORD" -v /sys/fs/cgroup:/sys/fs/cgroup -v /var/lib/nova:/var/lib/nova --pid=host --net=host sdake/fedora-rdo-nova-libvirt
@@ -35,4 +35,4 @@ sudo docker run -d --privileged -e "KEYSTONE_ADMIN_TOKEN=$PASSWORD" -e "NOVA_DB_
 
 # start nova compute
 
-sudo docker run -d --privileged -e "KEYSTONE_ADMIN_TOKEN=$PASSWORD" -e "NOVA_DB_PASSWORD=$PASSWORD" -e "RABBIT_PASSWORD=$PASSWORD" -e NETWORK_MANAGER="nova" -e "GLANCE_API_SERVICE_HOST=$SERVICE_HOST" -e "KEYSTONE_PUBLIC_SERVICE_HOST=$SERVICE_HOST" -e "RABBITMQ_SERVICE_HOST=$SERVICE_HOST" -e "NOVA_KEYSTONE_PASSWORD=$PASSWORD" -v /sys/fs/cgroup:/sys/fs/cgroup -v /var/lib/nova:/var/lib/nova -v /var/run/dbus:/var/run/dbus --pid=host --net=host imain/fedora-rdo-nova-compute
+sudo docker run -d --privileged -e "KEYSTONE_ADMIN_TOKEN=$PASSWORD" -e "NOVA_DB_PASSWORD=$PASSWORD" -e "RABBIT_PASSWORD=$PASSWORD" -e NETWORK_MANAGER="nova" -e "GLANCE_API_SERVICE_HOST=$SERVICE_HOST" -e "KEYSTONE_PUBLIC_SERVICE_HOST=$SERVICE_HOST" -e "RABBITMQ_SERVICE_HOST=$SERVICE_HOST" -e "NOVA_KEYSTONE_PASSWORD=$PASSWORD" -v /run/libvirt/qemu:/run/libvirt/qemu -v /var/log/libvirt/qemu:/var/log/libvirt/qemu -v /etc/libvirt/qemu:/etc/libvirt/qemu -v /sys/fs/cgroup:/sys/fs/cgroup -v /var/lib/nova:/var/lib/nova -v /var/run/dbus:/var/run/dbus --pid=host --net=host imain/fedora-rdo-nova-compute
